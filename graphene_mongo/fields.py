@@ -100,12 +100,11 @@ class MongoengineConnectionField(ConnectionField):
 
     @classmethod
     def get_query(cls, model, info, **args):
-
+        print('get_query', args)
         if not callable(getattr(model, 'objects', None)):
             return [], 0
 
         objs = model.objects()
-
         if args:
             reference_fields = get_model_reference_fields(model)
             reference_args = {}
@@ -148,6 +147,7 @@ class MongoengineConnectionField(ConnectionField):
         else:
             list_length = objs.count()
 
+        print(objs, list_length)
         return objs, list_length
 
     # noqa
@@ -183,7 +183,9 @@ class MongoengineConnectionField(ConnectionField):
         )
         connection.iterable = iterable
         connection.length = _len
+        print('abc', model, info)
         return connection
 
     def get_resolver(self, parent_resolver):
+        print(self.type)
         return partial(self.connection_resolver, parent_resolver, self.type, self.model)

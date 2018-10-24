@@ -1,5 +1,6 @@
 from graphene.relay import Node
 
+from ..fields import MongoengineConnectionField
 from ..types import MongoengineObjectType
 from .models import (
     Article, Editor, EmbeddedArticle, Player, Reporter,
@@ -97,6 +98,20 @@ class ReporterNode(MongoengineObjectType):
         model = Reporter
         interfaces = (Node,)
 
+    """
+    articles = MongoengineConnectionField(ArticleNode)
+    def resolve_articles(self, info, **kwargs):
+        pass
+        print('abaw')
+        # print(info)
+        # print(kwargs)
+        # print(ArticleNode.__dict__)
+        # print(self.get('articles'))
+        # return self.articles
+        # print(type(self.articles))
+        # a, _ = self.articles.get_query(Article, info, **kwargs)
+        # print(a)
+    """
 
 class ParentNode(MongoengineObjectType):
 
