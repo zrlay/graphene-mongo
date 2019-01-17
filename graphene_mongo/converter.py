@@ -61,18 +61,24 @@ def convert_field_to_float(field, registry=None):
 
 @convert_mongoengine_field.register(mongoengine.DictField)
 @convert_mongoengine_field.register(mongoengine.MapField)
-def convert_dict_to_jsonstring(field, registry=None):
+def convert_field_to_jsonstring(field, registry=None):
     return JSONString(description=field.db_field, required=field.required)
 
 
 @convert_mongoengine_field.register(mongoengine.PointField)
-def convert_point_to_field(field, register=None):
+def convert_field_to_field(field, register=None):
     return Field(PointFieldType)
 
 
 @convert_mongoengine_field.register(mongoengine.DateTimeField)
 def convert_field_to_datetime(field, registry=None):
     return DateTime(description=field.db_field, required=field.required)
+
+
+@convert_mongoengine_field.register(mongoengine.FileField)
+def convert_field_to_none(field, register=None):
+    # FIXME
+    return None
 
 
 @convert_mongoengine_field.register(mongoengine.ListField)
