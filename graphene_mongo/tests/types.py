@@ -1,140 +1,136 @@
+import models
+
 from graphene.relay import Node
 
 from ..types import MongoengineObjectType
-from .models import (
-    Article, Editor, EmbeddedArticle, Player, Reporter,
-    Parent, Child, ProfessorMetadata, ProfessorVector,
-    ParentWithRelationship, ChildRegisteredBefore,
-    ChildRegisteredAfter
-)
 
 
 class EditorType(MongoengineObjectType):
 
     class Meta:
-        model = Editor
+        model = models.Editor
 
 
 class ArticleType(MongoengineObjectType):
 
     class Meta:
-        model = Article
+        model = models.Article
 
 
 class EmbeddedArticleType(MongoengineObjectType):
 
     class Meta:
-        model = EmbeddedArticle
+        model = models.EmbeddedArticle
 
 
 class PlayerType(MongoengineObjectType):
 
     class Meta:
-        model = Player
+        model = models.Player
 
 
 class ReporterType(MongoengineObjectType):
 
     class Meta:
-        model = Reporter
+        model = models.Reporter
 
 
 class ParentType(MongoengineObjectType):
 
     class Meta:
-        model = Parent
+        model = models.Parent
 
 
 class ChildType(MongoengineObjectType):
 
     class Meta:
-        model = Child
+        model = models.Child
 
 
 class ProfessorMetadataType(MongoengineObjectType):
 
     class Meta:
-        model = ProfessorMetadata
+        model = models.ProfessorMetadata
 
 
 class ProfessorVectorType(MongoengineObjectType):
 
     class Meta:
-        model = ProfessorVector
+        model = models.ProfessorVector
 
 
 class ArticleNode(MongoengineObjectType):
 
     class Meta:
-        model = Article
+        model = models.Article
         interfaces = (Node,)
 
 
 class EditorNode(MongoengineObjectType):
 
     class Meta:
-        model = Editor
+        model = models.Editor
         interfaces = (Node,)
 
 
 class EmbeddedArticleNode(MongoengineObjectType):
 
     class Meta:
-        model = EmbeddedArticle
+        model = models.EmbeddedArticle
         interfaces = (Node,)
 
 
 class PlayerNode(MongoengineObjectType):
 
     class Meta:
-        model = Player
+        model = models.Player
         interfaces = (Node,)
 
 
 class ReporterNode(MongoengineObjectType):
 
     class Meta:
-        model = Reporter
+        model = models.Reporter
         interfaces = (Node,)
 
 
 class ParentNode(MongoengineObjectType):
 
     class Meta:
-        model = Parent
+        model = models.Parent
         interfaces = (Node,)
 
 
 class ChildNode(MongoengineObjectType):
 
     class Meta:
-        model = Child
+        model = models.Child
         interfaces = (Node,)
 
 
 class ChildRegisteredBeforeNode(MongoengineObjectType):
 
     class Meta:
-        model = ChildRegisteredBefore
+        model = models.ChildRegisteredBefore
         interfaces = (Node, )
 
 
 class ParentWithRelationshipNode(MongoengineObjectType):
 
     class Meta:
-        model = ParentWithRelationship
+        model = models.ParentWithRelationship
         interfaces = (Node, )
 
 
 class ChildRegisteredAfterNode(MongoengineObjectType):
 
     class Meta:
-        model = ChildRegisteredAfter
+        model = models.ChildRegisteredAfter
         interfaces = (Node, )
 
 
 class ProfessorVectorNode(MongoengineObjectType):
 
     class Meta:
-        model = ProfessorVector
+        model = models.ProfessorVector
         interfaces = (Node, )
