@@ -15,7 +15,6 @@ from graphene.types.json import JSONString
 
 import mongoengine
 
-from .advanced_types import PointFieldType
 from .fields import MongoengineConnectionField
 from .utils import import_single_dispatch
 
@@ -67,6 +66,7 @@ def convert_field_to_jsonstring(field, registry=None):
 
 @convert_mongoengine_field.register(mongoengine.PointField)
 def convert_field_to_field(field, register=None):
+    from .advanced_types import PointFieldType
     return Field(PointFieldType)
 
 
@@ -77,6 +77,8 @@ def convert_field_to_datetime(field, registry=None):
 
 @convert_mongoengine_field.register(mongoengine.FileField)
 def convert_field_to_none(field, register=None):
+    from .advanced_types import FsFileType
+    print(FsFileType)
     # FIXME
     return None
 

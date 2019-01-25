@@ -12,7 +12,6 @@ from graphene.types.argument import to_arguments
 from graphene.types.dynamic import Dynamic
 from graphene.types.structures import Structure
 
-from .advanced_types import PointFieldType
 from .utils import get_model_reference_fields
 
 
@@ -55,6 +54,8 @@ class MongoengineConnectionField(ConnectionField):
         self._base_args = args
 
     def _field_args(self, items):
+        from .advanced_types import PointFieldType
+
         def is_filterable(v):
             if isinstance(v, (ConnectionField, Dynamic)):
                 return False
